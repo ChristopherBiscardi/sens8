@@ -60,4 +60,13 @@ include anything you want even though you should try to follow the types.
 
 ## Server Side Rendering
 
+# Credits
+
+* [emotion][emotion-github]
+* [bolt][bolt]
+* [styled-system][styled-system]
+
 [emotion]: https://emotion.sh/
+[styled-system]: https://github.com/jxnblk/styled-system
+[bolt]: https://github.com/boltpkg/bolt
+[emotion-github]: https://github.com/emotion-js/emotion
