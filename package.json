@@ -31,9 +31,14 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.46",
     "@babel/preset-env": "^7.0.0-beta.44",
     "@babel/preset-react": "^7.0.0-beta.44",
+    "@mdx-js/loader": "^0.9.0",
+    "@storybook/addon-actions": "^4.0.0-alpha.7",
+    "@storybook/addon-console": "^1.0.0",
+    "@storybook/addon-options": "^4.0.0-alpha.7",
     "@storybook/react": "^4.0.0-alpha.1",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^22.4.3",
+    "babel-loader": "^8.0.0-beta",
     "emotion": "^9.1.0",
     "emotion-theming": "^9.1.2",
     "husky": "^0.14.3",
@@ -47,5 +52,8 @@
     "react-emotion": "^9.1.0",
     "storybook-addon-jest": "^0.0.1",
     "styled-system": "^2.2.1"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^0.9.0"
   }
 }

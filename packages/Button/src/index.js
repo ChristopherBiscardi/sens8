@@ -11,11 +11,11 @@ const sizes = {
   `
 };
 const sizeProp = ({ size, theme }) => sizes[size] || sizes["default"];
-export default ({ size, is, to, el, children, ...props }) => {
+export default ({ size, is, to, as, children, ...props }) => {
   const Base = do {
-    if (el) {
+    if (as) {
       // Want to support React Router Link, etc
-      BaseButton.withComponent(el);
+      BaseButton.withComponent(as);
     } else if (to) {
       // if there's an href, it has to be an achor
       BaseButton.withComponent("a");

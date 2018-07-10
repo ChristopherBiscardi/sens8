@@ -67,41 +67,16 @@ injectGlobal`
 const Span = styled.span`
   fontfamily: ${({ theme, fontFamily }) => theme[fontFamily] || "Comic Sans"};
 `;
-export class Text extends Component {
-  render() {
-    const {
-      children,
-      fontFamily,
-      inline,
-      bold,
-      underline,
-      italic
-    } = this.props;
-    const C = inline ? BaseText : BaseTextParagraph;
-    return <C>{children}</C>;
-  }
-}
 
-const isStates = {
-  danger: css`
-    color: red;
-  `,
-  default: css`
-    color: black;
-  `
-};
-const isProp = ({ is }) => isStates[is] || isStates["default"];
-export const isKeys = Object.keys(isStates);
+export { Heading } from "./src/heading";
+export { Text } from "./src/text";
+export { P } from "./src/paragraph";
 
-const BaseText = styled.span`
-  font-family: "Inter UI", sans-serif;
-  text-rendering: optimizeLegibility;
-  text-size-adjust: 100%;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  ${isProp};
-`;
-
-const BaseTextParagraph = BaseText.withComponent("p");
-
-export { Heading } from "./Heading";
+/*
+   <Cite>
+   <Span>
+   <BlockQuote>
+   <InlineQuote>
+   <P>
+   <Time>
+ */
