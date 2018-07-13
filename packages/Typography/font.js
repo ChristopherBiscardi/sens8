@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-import styled, { injectGlobal, css } from "react-emotion";
-import { fontSize } from "styled-system";
+import { injectGlobal } from "react-emotion";
 
 injectGlobal`
 @font-face {
@@ -63,20 +61,3 @@ injectGlobal`
        url("font-files/Inter-UI-BlackItalic.woff?v=2.5") format("woff");
 }
 `;
-
-const Span = styled.span`
-  fontfamily: ${({ theme, fontFamily }) => theme[fontFamily] || "Comic Sans"};
-`;
-
-export { Heading } from "./src/heading";
-export { Text } from "./src/text";
-//export { P } from "./src/paragraph";
-
-/*
-   <Cite>
-   <Span>
-   <BlockQuote>
-   <InlineQuote>
-   <P>
-   <Time>
- */
