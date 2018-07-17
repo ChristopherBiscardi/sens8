@@ -1,4 +1,4 @@
-import styled from "react-emotion";
+import styled, { css } from "react-emotion";
 import { fontSize } from "styled-system";
 
 export default styled("h1")``;
