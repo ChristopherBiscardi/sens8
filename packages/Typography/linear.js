@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled, { css } from "react-emotion";
 import { fontSize } from "styled-system";
+import { color } from "styled-system";
 import "./font";
 
 export default class Text extends Component {
@@ -12,6 +13,8 @@ export default class Text extends Component {
 
 const lineHeight = 1.5;
 export const P = styled("p")`
+  ${color};
+
   font-family: "Inter UI", sans-serif;
   /* Reading Width */
   // width should be between 45 and 75 characters, 66 is preferred
