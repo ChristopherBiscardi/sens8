@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import styled, { css } from "react-emotion";
-import { fontSize } from "styled-system";
-import { color } from "styled-system";
+import { fontSize, color } from "styled-system";
 import "./font";
 
 export default class Text extends Component {
@@ -65,6 +64,9 @@ export const Sup = styled.sup`
     }
   }
 `;
+P.defaultProps = {
+  color: "text"
+};
 export const Sub = styled.sub`
   font-variant-position: sub;
   @supports (font-variant-position: sub) {
