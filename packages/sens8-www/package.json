@@ -1,0 +1,25 @@
+{
+  "name": "sens8-www",
+  "private": true,
+  "description": "Sens8 Documentation site",
+  "author": "Chris Biscardi <chris@christopherbiscardi.com>",
+  "dependencies": {
+    "emotion": "^9.1.3",
+    "emotion-server": "^9.1.3",
+    "gatsby": "next",
+    "gatsby-plugin-emotion": "next",
+    "gatsby-plugin-google-analytics": "next",
+    "gatsby-plugin-offline": "next",
+    "gatsby-plugin-react-helmet": "next",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
+    "react-emotion": "^9.1.3",
+    "react-helmet": "^5.2.0"
+  },
+  "license": "MIT",
+  "main": "n/a",
+  "scripts": {
+    "develop": "gatsby develop",
+    "build": "gatsby build"
+  }
+}
