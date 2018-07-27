@@ -4,9 +4,12 @@ import { injectGlobal } from "emotion";
 import styled, { css } from "react-emotion";
 import { ThemeProvider } from "emotion-theming";
 import { Link, StaticQuery, graphql } from "gatsby";
+import { MDXProvider } from "@mdx-js/tag";
 
 import theme from "@sens8/tokens";
 import { Heading, Text } from "sens8";
+
+import LiveCode from "./live-code";
 
 injectGlobal`
   * {
@@ -109,6 +112,7 @@ class SiteLayout extends Component {
     }, {});
     return treeMap;
   };
+
   render() {
     const { children } = this.props;
     return (
@@ -127,58 +131,73 @@ class SiteLayout extends Component {
         `}
         render={data => (
           <ThemeProvider theme={theme}>
-            <Fragment>
-              <Helmet>
-                <title>Sens8 Design System</title>
-                <meta name="description" content="Sens8 Docs" />
-                <meta name="referrer" content="origin" />
-              </Helmet>
-              <div
-                css={`
-                  display: grid;
-                  grid-template-columns: 200px 1fr;
-                `}
-              >
-                <Sidebar>
-                  <ul>
-                    <NavElement to="/">Home</NavElement>
-                  </ul>
-                  {Object.entries(this.mkTreeMap(data)).map(([k, v]) => (
-                    <div name={k} key={k}>
-                      <h5>{k.toUpperCase()}</h5>
-                      {Object.entries(v).map(([k2, v2]) => (
-                        <ul
-                          key={k2}
-                          name={k2}
-                          css={`&:before{content: "${k2}"}`}
-                        >
-                          {Object.entries(v2).map(([k3, v3]) => (
-                            <NavElement
-                              to={"/" + v3.relativePath.slice(0, -4)}
-                              name={k3}
-                              key={k3}
-                            >
-                              {k3.toUpperCase()}
-                            </NavElement>
-                          ))}
-                        </ul>
-                      ))}
-                    </div>
-                  ))}
-                  <ul>
-                    {/*Object.entries(this.mkTreeMap(data)).map(
-                      ([k, { node }]) =>
-                        console.log("asdf", k, node) || (
-                          <NavAnchor to={node.relativePath}>
-                            {node.relativePath}
-                          </NavAnchor>
-                        )
-                    )*/}
-                  </ul>
-                </Sidebar>
-                <Wrapper>{children}</Wrapper>
-              </div>
-            </Fragment>
+            <MDXProvider
+              components={{
+                h1: ({ children, ...props }) => (
+                  <Heading level={1}>{children}</Heading>
+                ),
+                h2: ({ children, ...props }) => (
+                  <Heading level={2}>{children}</Heading>
+                ),
+                h3: ({ children, ...props }) => (
+                  <Heading level={3}>{children}</Heading>
+                ),
+                h4: ({ children, ...props }) => (
+                  <Heading level={4}>{children}</Heading>
+                ),
+                h5: ({ children, ...props }) => (
+                  <Heading level={5}>{children}</Heading>
+                ),
+                h6: ({ children, ...props }) => (
+                  <Heading level={6}>{children}</Heading>
+                ),
+                p: Text,
+                code: LiveCode
+              }}
+            >
+              <Fragment>
+                <Helmet>
+                  <title>Sens8 Design System</title>
+                  <meta name="description" content="Sens8 Docs" />
+                  <meta name="referrer" content="origin" />
+                </Helmet>
+                <div
+                  css={`
+                    display: grid;
+                    grid-template-columns: 200px 1fr;
+                  `}
+                >
+                  <Sidebar>
+                    <ul>
+                      <NavElement to="/">Home</NavElement>
+                    </ul>
+                    {Object.entries(this.mkTreeMap(data)).map(([k, v]) => (
+                      <div name={k} key={k}>
+                        <h5>{k.toUpperCase()}</h5>
+                        {Object.entries(v).map(([k2, v2]) => (
+                          <ul
+                            key={k2}
+                            name={k2}
+                            css={`&:before{content: "${k2}"}`}
+                          >
+                            {Object.entries(v2).map(([k3, v3]) => (
+                              <NavElement
+                                to={"/" + v3.relativePath.slice(0, -4)}
+                                name={k3}
+                                key={k3}
+                              >
+                                {k3.toUpperCase()}
+                              </NavElement>
+                            ))}
+                          </ul>
+                        ))}
+                      </div>
+                    ))}
+                  </Sidebar>
+                  <Wrapper>{children}</Wrapper>
+                </div>
+              </Fragment>
+            </MDXProvider>
           </ThemeProvider>
         )}
       />
