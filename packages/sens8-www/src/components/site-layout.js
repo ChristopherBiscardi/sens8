@@ -1,0 +1,189 @@
+import React, { Fragment, Component } from "react";
+import Helmet from "react-helmet";
+import { injectGlobal } from "emotion";
+import styled, { css } from "react-emotion";
+import { ThemeProvider } from "emotion-theming";
+import { Link, StaticQuery, graphql } from "gatsby";
+
+import theme from "@sens8/tokens";
+import { Heading, Text } from "sens8";
+
+injectGlobal`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
+
+injectGlobal`
+  html, body {
+    font-family: -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Roboto Light",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif,
+      "Apple Color Emoji",
+      "Segoe UI Emoji",
+      "Segoe UI Symbol";
+  }
+`;
+
+//  align-items: center;
+// justify-content: center;
+// Using styled (similar API as styled-components)
+const Wrapper = styled.section`
+  background: ${({ theme }) => theme.colors.background};
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+  padding: 1.5em;
+`;
+
+// Using css with template literal
+const title = css`
+  font-size: 1.5em;
+  color: #ff79c6;
+  margin-bottom: 0.5em;
+
+  a {
+    color: #8be9fd;
+  }
+`;
+
+// Using css with object
+const subtitle = css({
+  color: `#bd93f9`
+});
+
+const Sidebar = styled.section`
+  background: ${({ theme }) => theme.colors.backgroundLayers[3]};
+  border-right: 1px solid ${({ theme }) => theme.colors.backgroundLayers[2]};
+`;
+
+const NavAnchor = styled(Link)`
+  display: flex;
+  flex: 1;
+  padding: 0.5em;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.text};
+`;
+
+class NavElement extends Component {
+  render() {
+    const { to, children } = this.props;
+    return (
+      <li>
+        <NavAnchor to={to}>{children}</NavAnchor>
+      </li>
+    );
+  }
+}
+
+class SiteLayout extends Component {
+  mkTreeMap = data => {
+    const treeMap = data.allMdx.edges.reduce((acc, cur) => {
+      let curObj = acc;
+      cur.node.relativePath
+        .slice(0, -4)
+        .split("/")
+        .forEach((v, i, arr) => {
+          if (curObj[v] || acc[v]) {
+            curObj = curObj[v] || acc[v];
+          } else if (i < arr.length - 1) {
+            curObj[v] = {};
+            curObj = curObj[v];
+          } else {
+            curObj[v] = cur.node;
+          }
+        });
+      return acc;
+    }, {});
+    return treeMap;
+  };
+  render() {
+    const { children } = this.props;
+    return (
+      <StaticQuery
+        query={graphql`
+          query {
+            allMdx(limit: 1000) {
+              edges {
+                node {
+                  fileAbsolutePath
+                  relativePath
+                }
+              }
+            }
+          }
+        `}
+        render={data => (
+          <ThemeProvider theme={theme}>
+            <Fragment>
+              <Helmet>
+                <title>Sens8 Design System</title>
+                <meta name="description" content="Sens8 Docs" />
+                <meta name="referrer" content="origin" />
+              </Helmet>
+              <div
+                css={`
+                  display: grid;
+                  grid-template-columns: 200px 1fr;
+                `}
+              >
+                <Sidebar>
+                  <ul>
+                    <NavElement to="/">Home</NavElement>
+                  </ul>
+                  {Object.entries(this.mkTreeMap(data)).map(([k, v]) => (
+                    <div name={k} key={k}>
+                      <h5>{k.toUpperCase()}</h5>
+                      {Object.entries(v).map(([k2, v2]) => (
+                        <ul
+                          key={k2}
+                          name={k2}
+                          css={`&:before{content: "${k2}"}`}
+                        >
+                          {Object.entries(v2).map(([k3, v3]) => (
+                            <NavElement
+                              to={"/" + v3.relativePath.slice(0, -4)}
+                              name={k3}
+                              key={k3}
+                            >
+                              {k3.toUpperCase()}
+                            </NavElement>
+                          ))}
+                        </ul>
+                      ))}
+                    </div>
+                  ))}
+                  <ul>
+                    {/*Object.entries(this.mkTreeMap(data)).map(
+                      ([k, { node }]) =>
+                        console.log("asdf", k, node) || (
+                          <NavAnchor to={node.relativePath}>
+                            {node.relativePath}
+                          </NavAnchor>
+                        )
+                    )*/}
+                  </ul>
+                </Sidebar>
+                <Wrapper>{children}</Wrapper>
+              </div>
+            </Fragment>
+          </ThemeProvider>
+        )}
+      />
+    );
+  }
+}
+
+export default SiteLayout;

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { space, width, fontSize, color } from "styled-system";
+import React from "react";
+import { width, fontSize, color } from "styled-system";
 import styled, { css } from "react-emotion";
 
 const sizes = {

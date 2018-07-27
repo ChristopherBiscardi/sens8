@@ -7,7 +7,13 @@ const breakpoints = ["40em", "52em", "64em"];
 
 const colors = {
   text: rawColors.blue[0],
-  background: rawColors.blue[9],
+  background: rawColors.blue[6],
+  backgroundLayers: [
+    rawColors.black,
+    rawColors.blue[9],
+    rawColors.blue[8],
+    rawColors.blue[7]
+  ],
   raw: rawColors
 };
 

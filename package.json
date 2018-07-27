@@ -9,7 +9,7 @@
   "license": "MIT",
   "private": "true",
   "bolt": {
-    "workspaces": ["packages/*"]
+    "workspaces": ["packages/*", "vendor/*", "ui-surfaces/*"]
   },
   "scripts": {
     "test": "jest",
@@ -26,11 +26,16 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.44",
     "@babel/core": "^7.0.0-beta.44",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
     "@babel/plugin-proposal-do-expressions": "^7.0.0-beta.46",
     "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.46",
     "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.46",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.54",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.54",
     "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/preset-flow": "^7.0.0-beta.54",
     "@babel/preset-react": "^7.0.0-beta.44",
+    "@babel/runtime": "^7.0.0-beta.54",
     "@mdx-js/loader": "^0.14.0",
     "@storybook/addon-actions": "^4.0.0-alpha.7",
     "@storybook/addon-console": "^1.0.0",
@@ -61,10 +66,14 @@
     "styled-system": "^3.0.2"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^0.14.0",
+    "@mdx-js/mdx": "^0.15.0-0",
+    "@mdx-js/tag": "^0.14.0",
+    "gatsby-mdx": "^0.0.3",
+    "gatsby-source-filesystem": "^2.0.1-beta.8",
     "palx": "^1.0.3",
     "prism": "^4.1.2",
     "prismjs": "^1.15.0",
-    "react-prism": "^4.3.2"
+    "react-prism": "^4.3.2",
+    "superbox": "^2.1.0"
   }
 }
