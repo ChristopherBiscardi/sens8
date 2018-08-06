@@ -70,6 +70,7 @@ const subtitle = css({
 const Sidebar = styled.section`
   background: ${({ theme }) => theme.colors.backgroundLayers[3]};
   border-right: 1px solid ${({ theme }) => theme.colors.backgroundLayers[2]};
+  border-left: 3px solid ${({ theme }) => theme.colors.backgroundLayers[1]};
 `;
 
 const NavAnchor = styled(Link)`
@@ -78,6 +79,16 @@ const NavAnchor = styled(Link)`
   padding: 0.5em;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.text};
+  margin-left: -3px;
+  padding-left: calc(3px+0.5em);
+  &:active {
+    border-left: 5px solid #fff;
+  }
+`;
+
+const activeNavAnchor = css`
+  border-left: 5px solid #fff;
+  padding-left: 0;
 `;
 
 class NavElement extends Component {
@@ -85,7 +96,9 @@ class NavElement extends Component {
     const { to, children } = this.props;
     return (
       <li>
-        <NavAnchor to={to}>{children}</NavAnchor>
+        <NavAnchor to={to} exact activeClassName={activeNavAnchor}>
+          {children}
+        </NavAnchor>
       </li>
     );
   }
@@ -173,12 +186,12 @@ class SiteLayout extends Component {
                     </ul>
                     {Object.entries(this.mkTreeMap(data)).map(([k, v]) => (
                       <div name={k} key={k}>
-                        <h5>{k.toUpperCase()}</h5>
+                        <Heading level="5">{k}</Heading>
                         {Object.entries(v).map(([k2, v2]) => (
                           <ul
                             key={k2}
                             name={k2}
-                            css={`&:before{content: "${k2}"}`}
+                            css={`&:before{content: "${k2}"; padding-left: .5em; color: white;}`}
                           >
                             {Object.entries(v2).map(([k3, v3]) => (
                               <NavElement

@@ -22,7 +22,10 @@ module.exports = {
     {
       resolve: require.resolve(`gatsby-mdx`),
       options: {
-        defaultLayout: require.resolve("./src/components/site-layout.js")
+        defaultLayouts: {
+          default: require.resolve("./src/components/site-layout.js")
+        },
+        decks: []
       }
     },
     `gatsby-plugin-offline`
