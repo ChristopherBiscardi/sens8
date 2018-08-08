@@ -68,7 +68,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^0.15.0-2",
     "@mdx-js/tag": "^0.15.0-2",
-    "gatsby-mdx": "^0.0.8",
+    "gatsby-mdx": "^0.0.10-pre.1",
     "gatsby-source-filesystem": "^2.0.1-beta.8",
     "palx": "^1.0.3",
     "prism": "^4.1.2",

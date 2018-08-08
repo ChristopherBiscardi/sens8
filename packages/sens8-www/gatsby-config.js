@@ -24,8 +24,7 @@ module.exports = {
       options: {
         defaultLayouts: {
           default: require.resolve("./src/components/site-layout.js")
-        },
-        decks: []
+        }
       }
     },
     `gatsby-plugin-offline`
