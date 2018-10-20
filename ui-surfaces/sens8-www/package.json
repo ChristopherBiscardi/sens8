@@ -1,5 +1,6 @@
 {
   "name": "sens8-www",
+  "version": "0.0.1",
   "private": true,
   "description": "Sens8 Documentation site",
   "author": "Chris Biscardi <chris@christopherbiscardi.com>",
@@ -8,7 +9,7 @@
     "emotion": "^9.1.3",
     "emotion-server": "^9.1.3",
     "gatsby": "^2.0.0-beta.69",
-    "gatsby-mdx": "ci",
+    "gatsby-mdx": "^0.2.1-ci.206",
     "gatsby-plugin-emotion": "^2.0.0-rc.0",
     "gatsby-plugin-google-analytics": "^2.0.0-rc.0",
     "gatsby-plugin-offline": "^2.0.0-beta.6",

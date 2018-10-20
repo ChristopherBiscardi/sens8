@@ -25,7 +25,7 @@ export default ({ size, is, to, as, children, ...props }) => {
   };
 
   return (
-    <Base is={is} {...{ href: to }} size={size} {...props}>
+    <Base is={is} href={to} size={size} {...props}>
       {children}
     </Base>
   );

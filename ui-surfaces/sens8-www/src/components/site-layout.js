@@ -135,8 +135,12 @@ class SiteLayout extends Component {
             allMdx(limit: 1000) {
               edges {
                 node {
-                  fileAbsolutePath
-                  relativePath
+                  parent {
+                    ... on File {
+                      absolutePath
+                      relativePath
+                    }
+                  }
                 }
               }
             }
