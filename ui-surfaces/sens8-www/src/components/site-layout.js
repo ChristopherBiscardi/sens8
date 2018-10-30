@@ -108,7 +108,7 @@ class SiteLayout extends Component {
   mkTreeMap = data => {
     const treeMap = data.allMdx.edges.reduce((acc, cur) => {
       let curObj = acc;
-      cur.node.relativePath
+      cur.node.parent.relativePath
         .slice(0, -4)
         .split("/")
         .forEach((v, i, arr) => {
@@ -199,7 +199,7 @@ class SiteLayout extends Component {
                           >
                             {Object.entries(v2).map(([k3, v3]) => (
                               <NavElement
-                                to={"/" + v3.relativePath.slice(0, -4)}
+                                to={"/" + v3.parent.relativePath.slice(0, -4)}
                                 name={k3}
                                 key={k3}
                               >

@@ -12,7 +12,7 @@ const sizes = {
 };
 const sizeProp = ({ size, theme }) => sizes[size] || sizes["default"];
 export default ({ size, is, to, as, children, ...props }) => {
-  const Base = do {
+  const Base = BaseButton; /* do {
     if (as) {
       // Want to support React Router Link, etc
       BaseButton.withComponent(as);
@@ -22,7 +22,7 @@ export default ({ size, is, to, as, children, ...props }) => {
     } else {
       BaseButton;
     }
-  };
+  };*/
 
   return (
     <Base is={is} href={to} size={size} {...props}>

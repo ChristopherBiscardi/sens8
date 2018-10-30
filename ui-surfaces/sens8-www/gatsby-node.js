@@ -46,7 +46,7 @@ exports.onCreateWebpackConfig = ({
       rules: [
         {
           test: /\.js$/,
-          include: /sens8\/packages/,
+          include: /(sens8\/packages|@sens8)/,
           use: [loaders.js()]
         }
       ]
