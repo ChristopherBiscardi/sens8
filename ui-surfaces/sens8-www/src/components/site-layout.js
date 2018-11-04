@@ -123,6 +123,7 @@ class SiteLayout extends Component {
         });
       return acc;
     }, {});
+
     return treeMap;
   };
 
@@ -190,7 +191,7 @@ class SiteLayout extends Component {
                     </ul>
                     {Object.entries(this.mkTreeMap(data)).map(([k, v]) => (
                       <div name={k} key={k}>
-                        <Heading level="5">{k}</Heading>
+                        <Heading level="5">{k.toUpperCase()}</Heading>
                         {Object.entries(v).map(([k2, v2]) => (
                           <ul
                             key={k2}
@@ -203,7 +204,7 @@ class SiteLayout extends Component {
                                 name={k3}
                                 key={k3}
                               >
-                                {k3.toUpperCase()}
+                                {k3}
                               </NavElement>
                             ))}
                           </ul>
