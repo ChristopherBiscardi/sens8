@@ -1,9 +1,28 @@
+const path = require("path");
+
 module.exports = function(plop) {
-  console.log("plop");
-  // create your generators here
-  plop.setGenerator("basics", {
-    description: "this is a skeleton plopfile",
-    prompts: [], // array of inquirer prompts
-    actions: [] // array of actions
+  plop.setGenerator("component", {
+    description: "A design system component",
+    prompts: [
+      {
+        type: "input",
+        name: "name",
+        message: "component name please"
+      }
+    ],
+    actions: [
+      {
+        type: "addMany",
+        destination: "packages/{{dashCase name}}",
+        templateFiles: "templates/component/*",
+        base: "templates/component"
+      },
+      {
+        type: "append",
+        template:
+          "export { default as {{titleCase name}} } from '@sens8/component-{{dashCase name}}'",
+        pattern: /$/
+      }
+    ]
   });
 };

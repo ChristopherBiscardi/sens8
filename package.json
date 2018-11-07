@@ -10,7 +10,7 @@
   "workspaces": ["packages/*", "ui-surfaces/*", "utils/*"],
   "scripts": {
     "test": "jest",
-    "plop": "yarn workspace @sens8/plop plop"
+    "plop": "plop"
   },
   "lint-staged": {
     "*.{js,jsx}": ["prettier --parser babylon --write", "git add"],
@@ -20,6 +20,7 @@
     "*.{css,scss}": ["prettier --parser css --write", "git add"]
   },
   "devDependencies": {
+    "@sens8/plop": "*",
     "husky": "^1.1.2",
     "jest": "^23.4.1",
     "lint-staged": "^8.0.3",
