@@ -10,7 +10,6 @@
   "workspaces": ["packages/*", "ui-surfaces/*", "utils/*"],
   "scripts": {
     "test": "jest",
-    "precommit": "lint-staged",
     "plop": "yarn workspace @sens8/plop plop"
   },
   "lint-staged": {
