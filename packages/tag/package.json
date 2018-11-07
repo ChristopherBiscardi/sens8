@@ -2,6 +2,6 @@
   "name": "@sens8/component-tags",
   "version": "0.0.1",
   "description": "Tags. Meant to label things.",
-  "main": "src/index.js",
+  "main": "index.js",
   "license": "MIT"
 }
