@@ -67,11 +67,11 @@ which is called immediately and receives two control functions as
 arguments, usually named `resolve(..)` and `reject(..)`. They are used
 as:
 
-* If you call `reject(..)`, the promise is rejected, and if any value
+- If you call `reject(..)`, the promise is rejected, and if any value
   is passed to `reject(..)`, it is set as the reason for rejection.
-* If you call `resolve(..)` with no value, or any non-promise value,
+- If you call `resolve(..)` with no value, or any non-promise value,
   the promise is fulfilled.
-* If you call `resolve(..)` and pass another promise, this promise
+- If you call `resolve(..)` and pass another promise, this promise
   simply adopts the state -- whether immediate or eventual -- of the
   passed promise (either fulfillment or rejection).
 

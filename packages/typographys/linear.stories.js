@@ -4,32 +4,54 @@ import { action } from "@storybook/addon-actions";
 import mdx from "@mdx-js/mdx";
 import styled from "react-emotion";
 
-import H from "./display";
-import Text from "./linear";
+// example data
+import Ch4 from "./ch4.mdx";
+import Ex from "./markdown-sample.mdx";
+import Text, { OL, UL, Sup, Sub, BlockQuote, Link } from "./linear";
+import Heading, { H1, H2, H3, H4, H5, H6 } from "./display";
+import Code from "./code";
 
 const Divider = styled.hr`
   color: black;
 `;
 
-storiesOf("Typography|display", module)
+storiesOf("Typography|linear", module)
   .add("README", () => (
-    <Fragment>
-      <H level={1}>Display Typography</H>
-      <H level={5}>Meant to be seen, like an image</H>
-      <Text>
-        Typography is a central part of any user interface, especially on the
-        web. This set of components are meant to be displayed as headings and in
-        hero sections
-      </Text>
-      <section>
-        <H>Usage</H>
-      </section>
-    </Fragment>
+    <div
+      css={`
+        display: flex;
+      `}
+    >
+      <div>
+        <H1>Linear Typography</H1>
+        <H5>Meant to be read</H5>
+        <Text>
+          Typography is a central part of any user interface, especially on the
+          web. This set of components are meant to fulfill any typographic need,
+          be it headings, display text, citations, emphasis, or quotes.
+        </Text>
+        <section>
+          <Heading>Usage</Heading>
+        </section>
+      </div>
+      <div>
+        <Text>
+          Typography is a central part of any user interface, especially on the
+          web. This set of components are meant to fulfill any typographic need,
+          be it headings, display text, citations, emphasis, or quotes.
+        </Text>
+        <Text>
+          Typography is a central part of any user interface, especially on the
+          web. This set of components are meant to fulfill any typographic need,
+          be it headings, display text, citations, emphasis, or quotes.
+        </Text>
+      </div>{" "}
+    </div>
   ))
   .add("kitchen sink", () => (
     <Fragment>
-      <H level={1}>Kitchen Sink</H>
-      <H>Paragraphs</H>
+      <H1>Kitchen Sink</H1>
+      <H2>Paragraphs</H2>
       <Text>
         Here’s how it all got started. The goal with&nbsp;
         <Link href="https://gatsbymanor.com">Gatsby Manor</Link> (a separate
@@ -39,8 +61,9 @@ storiesOf("Typography|display", module)
         starter&nbsp;
         <Link href="https://gatsbymanor.com/demo/eventually">
           gatsby-starter-eventually
-        </Link>, I wanted to organize the directory structure of the project to
-        better fit my workflow.
+        </Link>
+        , I wanted to organize the directory structure of the project to better
+        fit my workflow.
       </Text>
       <Text>
         Gatsby core automatically turns React components in{" "}
@@ -63,7 +86,7 @@ storiesOf("Typography|display", module)
   .add("linear markdown example", () => (
     <Ch4
       components={{
-        H1: H1,
+        h1: H1,
         h2: H2,
         h3: H3,
         h4: H4,
@@ -74,14 +97,15 @@ storiesOf("Typography|display", module)
         ul: UL,
         sub: Sub,
         sup: Sup,
-        blockquote: BlockQuote
+        blockquote: BlockQuote,
+        code: Code
       }}
     />
   ))
   .add("markdown example", () => (
     <Ex
       components={{
-        H1: H1,
+        h1: H1,
         h2: H2,
         h3: H3,
         h4: H4,
@@ -91,7 +115,14 @@ storiesOf("Typography|display", module)
         ol: OL,
         sub: Sub,
         sup: Sup,
-        blockquote: BlockQuote
+        blockquote: BlockQuote,
+        code: Code
       }}
     />
   ));
+
+storiesOf("Typography|linear", module).add("Text", () => (
+  <Fragment>
+    <Text>some paragraph content</Text>
+  </Fragment>
+));
