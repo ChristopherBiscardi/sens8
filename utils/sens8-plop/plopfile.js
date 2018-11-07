@@ -19,8 +19,9 @@ module.exports = function(plop) {
       },
       {
         type: "append",
+        path: "packages/sens8/index.js",
         template:
-          "export { default as {{titleCase name}} } from '@sens8/component-{{dashCase name}}'",
+          "export { default as {{pascalCase name}} } from '@sens8/component-{{dashCase name}}'",
         pattern: /$/
       }
     ]
