@@ -7,10 +7,11 @@
   "author": "ChristopherBiscardi <chris@christopherbiscardi.com>",
   "license": "MIT",
   "private": "true",
-  "workspaces": ["packages/*", "ui-surfaces/*"],
+  "workspaces": ["packages/*", "ui-surfaces/*", "utils/*"],
   "scripts": {
     "test": "jest",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "plop": "yarn workspace @sens8/plop plop"
   },
   "lint-staged": {
     "*.{js,jsx}": ["prettier --parser babylon --write", "git add"],
