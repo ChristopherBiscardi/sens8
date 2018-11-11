@@ -1,10 +1,24 @@
+import React from "react";
 import PrismCode from "react-prism";
 import { injectGlobal } from "react-emotion";
 import theme from "@sens8/tokens";
 
 require("prismjs");
 
-export default PrismCode;
+export default ({ is, children, lang, ...etc }) => {
+  const props = {
+    ...etc,
+    className: etc.className ? etc.className : `language-${lang}`
+  };
+  if (!is) {
+    return <PrismCode {...props}>{children}</PrismCode>;
+  }
+  return (
+    <PrismCode component="pre" {...props}>
+      {children}
+    </PrismCode>
+  );
+};
 
 injectGlobal`
   code[class*="language-"],
