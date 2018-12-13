@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import React, { Component } from "react";
-import styled, { css } from "react-emotion";
+import styled from "@emotion/styled";
+import { css, jsx } from "@emotion/core";
 import { fontSize, color } from "styled-system";
 import "./font";
 

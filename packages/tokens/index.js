@@ -1,5 +1,6 @@
 //import palx from "palx";
 import rawColors from "./src/colors";
+import code from "./src/code";
 
 // breakpoint values
 // any array length works with styled-system
@@ -50,6 +51,7 @@ const shadows = [`0 1px 2px 0 ${colors.text}`, `0 1px 4px 0 ${colors.text}`];
 const theme = {
   breakpoints,
   colors,
+  code: code(colors),
   space,
   fontSizes,
   lineHeights,

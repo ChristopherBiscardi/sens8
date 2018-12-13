@@ -1,5 +1,7 @@
+/** @jsx jsx */
 import React from "react";
-import styled from "react-emotion";
+import styled from "@emotion/styled";
+import { jsx } from "@emotion/core";
 import { width, color } from "styled-system";
 import { opacify } from "polished";
 

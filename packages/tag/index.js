@@ -1,4 +1,6 @@
-import styled from "react-emotion";
+/** @jsx jsx */
+import styled from "@emotion/styled";
+import { jsx } from "@emotion/core";
 
 export default styled.div`
   font-size: 14px;

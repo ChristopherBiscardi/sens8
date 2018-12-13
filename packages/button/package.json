@@ -3,5 +3,8 @@
   "version": "0.0.1",
   "description": "A Button",
   "main": "src/index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@emotion/core": "^10.0.4"
+  }
 }

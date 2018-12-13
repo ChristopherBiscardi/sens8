@@ -1,140 +1,57 @@
+/** @jsx jsx */
 import React from "react";
-import PrismCode from "react-prism";
-import { injectGlobal } from "react-emotion";
-import theme from "@sens8/tokens";
+import { Global, css, jsx } from "@emotion/core";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import { withTheme } from "emotion-theming";
 
-require("prismjs");
-
-export default ({ is, children, lang, ...etc }) => {
+export default withTheme(({ theme, is, children, lang = "markup", ...etc }) => {
   const props = {
     ...etc,
     className: etc.className ? etc.className : `language-${lang}`
   };
+  console.log(lang, children);
+  // inline code
   if (!is) {
-    return <PrismCode {...props}>{children}</PrismCode>;
+    return (
+      <Highlight
+        {...defaultProps}
+        theme={theme.code || defaultProps.theme}
+        code={children}
+        language={lang}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <code className={className} style={{ ...style, display: "inline" }}>
+            {tokens.map((line, i) =>
+              line.map((token, key) => (
+                <span {...getTokenProps({ token, key })} />
+              ))
+            )}
+          </code>
+        )}
+      </Highlight>
+    );
   }
+
+  console.log("code theme", lang);
+  // default to Block
   return (
-    <PrismCode component="pre" {...props}>
-      {children}
-    </PrismCode>
+    <Highlight
+      {...defaultProps}
+      theme={theme.code || defaultProps.theme}
+      code={children.trim()}
+      language={lang}
+    >
+      {({ className, style, tokens, getLineProps, getTokenProps }) => (
+        <pre className={className} style={style}>
+          {tokens.map((line, i) => (
+            <div {...getLineProps({ line, key: i })}>
+              {line.map((token, key) => (
+                <span {...getTokenProps({ token, key })} />
+              ))}
+            </div>
+          ))}
+        </pre>
+      )}
+    </Highlight>
   );
-};
-
-injectGlobal`
-  code[class*="language-"],
-  pre[class*="language-"] {
-    color: ${theme.colors.text};
-    background: none;
-    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-    text-align: left;
-    white-space: pre;
-    word-spacing: normal;
-    word-break: normal;
-    word-wrap: normal;
-    line-height: 1.5;
-
-    -moz-tab-size: 4;
-    -o-tab-size: 4;
-    tab-size: 4;
-
-    -webkit-hyphens: none;
-    -moz-hyphens: none;
-    -ms-hyphens: none;
-    hyphens: none;
-  }
-
-  /* Code blocks */
-  pre[class*="language-"] {
-    padding: 1em;
-    margin: 1.5em 0;
-    overflow: auto;
-  }
-
-  :not(pre) > code[class*="language-"],
-  pre[class*="language-"] {
-    background: ${theme.colors.raw.blue[6]};
-    border-top: 1px solid ${theme.colors.raw.blue[9]};
-    border-bottom: 1px solid ${theme.colors.raw.blue[9]};
-  }
-
-  /* Inline code */
-  :not(pre) > code[class*="language-"] {
-    padding: 0.1em;
-    border-radius: 0.3em;
-    white-space: normal;
-  }
-
-  .token.comment,
-  .token.block-comment,
-  .token.prolog,
-  .token.doctype,
-  .token.cdata {
-    color: ${theme.colors.raw.blue[4]};
-  }
-
-  .token.punctuation {
-    color: ${theme.colors.text};
-  }
-
-  .token.tag,
-  .token.attr-name,
-  .token.namespace,
-  .token.deleted {
-    color: #e2777a;
-  }
-
-  .token.function-name {
-    color: #6196cc;
-  }
-
-  .token.boolean,
-  .token.number,
-  .token.function {
-    color: #f08d49;
-  }
-
-  .token.property,
-  .token.class-name,
-  .token.constant,
-  .token.symbol {
-    color: #f8c555;
-  }
-
-  .token.selector,
-  .token.important,
-  .token.atrule,
-  .token.keyword,
-  .token.builtin {
-    color: #cc99cd;
-  }
-
-  .token.string,
-  .token.char,
-  .token.attr-value,
-  .token.regex,
-  .token.variable {
-    color: #7ec699;
-  }
-
-  .token.operator,
-  .token.entity,
-  .token.url {
-    color: #67cdcc;
-  }
-
-  .token.important,
-  .token.bold {
-    font-weight: bold;
-  }
-  .token.italic {
-    font-style: italic;
-  }
-
-  .token.entity {
-    cursor: help;
-  }
-
-  .token.inserted {
-    color: green;
-  }
-`;
+});
