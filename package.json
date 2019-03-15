@@ -27,9 +27,5 @@
     "jest": "^24.5.0",
     "lint-staged": "^8.1.5",
     "prettier": "^1.16.4"
-  },
-  "resolutions": {
-    "react": "16.7.0-alpha.0",
-    "react-dom": "16.7.0-alpha.0"
   }
 }
