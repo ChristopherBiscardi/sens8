@@ -17,12 +17,10 @@
   },
   "lint-staged": {
     "*.{js,json,graphql,gql,css,yaml,yml}": [
-      "prettier --print-width 60 --write",
-      "git add"
+      "prettier --print-width 60 --write"
     ],
     "*.{md,markdown,mdx}": [
-      "prettier --parser mdx --prose-wrap always --write",
-      "git add"
+      "prettier --parser mdx --prose-wrap always --write"
     ]
   },
   "devDependencies": {
