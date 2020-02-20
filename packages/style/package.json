@@ -1,0 +1,15 @@
+{
+  "name": "@sens8/style",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "christopherbiscardi <chris@christopherbiscardi.com> (@chrisbiscardi)",
+  "license": "MIT",
+  "devDependencies": {
+    "@emotion/cache": "^10.0.27",
+    "@emotion/core": "^10.0.27",
+    "emotion-server": "^10.0.27",
+    "jest-emotion": "^10.0.27",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
