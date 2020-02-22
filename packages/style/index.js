@@ -2,7 +2,7 @@ import React from "react";
 import { CacheProvider } from "@emotion/core";
 import createCache from "@emotion/cache";
 
-export const createChrisCache = () =>
+export const createChrisCache = opts =>
   createCache({
     key: "chrisbiscardi",
     stylisPlugins: [
@@ -28,8 +28,10 @@ export const createChrisCache = () =>
           length,
           type
         );
+        return content.replace("blue", "red");
       }
-    ]
+    ],
+    ...opts
   });
 
 export default function EmotionProvider(props) {
